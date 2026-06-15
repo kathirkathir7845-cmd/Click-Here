@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 🎯 SURPRISE TITLE -->
+    <title>Special Memory Gallery ✨</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800;900&family=Poppins:wght@300;400;600;700&family=Gochi+Hand&family=Cinzel:wght@700&family=Cormorant+Garamond:wght@600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        body { font-family: 'Poppins', sans-serif; overflow-x: hidden; background-color: #000; }
+        
+        /* CLEAN & PREMIUM FONTS */
+        .clean-title-font { font-family: 'Montserrat', sans-serif; font-weight: 800; tracking-widest: 0.1em; }
+        .clean-sub-font { font-family: 'Montserrat', sans-serif; font-weight: 500; tracking-widest: 0.2em; }
+        .capital-birthday-font { font-family: 'Montserrat', sans-serif; font-weight: 900; letter-spacing: 4px; }
+        
+        /* CUTE TEXT & SIGNATURE FONTS */
+        .first-stage-cute-font { font-family: 'Gochi Hand', cursive; letter-spacing: 1px; }
+        .always-with-you-font { font-family: 'Montserrat', sans-serif; font-weight: 700; letter-spacing: 1px; }
+        .always-give-sub { font-family: 'Gochi Hand', cursive; }
+        
+        .premium-name-font { font-family: 'Cinzel', serif; letter-spacing: 2px; }
+        .premium-subname-font { font-family: 'Cormorant Garamond', serif; letter-spacing: 1px; }
+
+        .neon-glow-pink { text-shadow: 0 0 10px rgba(244,63,94,0.8), 0 0 20px rgba(244,63,94,0.4); }
+        .neon-glow-gold { text-shadow: 0 0 10px rgba(234,179,8,0.8), 0 0 20px rgba(234,179,8,0.4); }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #1e1b4b; }
+        ::-webkit-scrollbar-thumb { background: #f43f5e; border-radius: 10px; }
+
+        /* Smooth Carousel Container */
+        .scroll-container {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+        }
+        .scroll-container::-webkit-scrollbar {
+            display: none;
+        }
+        .scroll-item {
+            flex: 0 0 100%;
+            width: 100%;
+            height: 100%;
+            scroll-snap-align: start;
+        }
+
+        /* Dot Style */
+        .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.4);
+            transition: all 0.3s ease;
+        }
+        .dot.active {
+            background-color: #f43f5e;
+            width: 20px;
+            border-radius: 4px;
+            box-shadow: 0 0 8px #f43f5e;
+        }
+
+        /* Background Images */
+        .bubu-bg { background-image: url('bubududu.jpg'); background-size: cover; background-position: center; }
+        .jesus-bg { background-image: url('jesus.png'); background-size: cover; background-position: center; }
+        .cat-bg { background-image: url('cat.jpg'); background-size: cover; background-position: center; }
+    </style>
+</head>
+<body class="text-white relative min-h-screen">
+
+    <!-- BACKGROUND AUDIO -->
+    <audio id="bg-music" src="bgm.mpeg" loop></audio>
+
+    <!-- ================= 1) STARTING BLUR PAGE WITH BUBUDUDU BACKGROUND ================= -->
+    <div id="stage1" class="fixed inset-0 z-50 flex flex-col items-center justify-center bubu-bg transition-all duration-1000 cursor-pointer" onclick="goToStage2()">
+        <div class="absolute inset-0 bg-black/45 backdrop-blur-[3px] z-10"></div>
+        
+        <div class="relative z-20 text-center px-4 flex flex-col items-center select-none">
+            <div class="animate-bounce text-4xl text-yellow-400 mb-2 drop-shadow-md">
+                <i class="fa-solid fa-hand-pointer"></i>
+            </div>
+            <p class="text-4xl first-stage-cute-font text-white text-center drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)] max-w-sm leading-tight">
+                Tap anywhere to view this page clearly
+            </p>
+        </div>
+    </div>
+
+    <!-- ================= 2) NEXT PAGE WITH JESUS IMAGE BACKGROUND ================= -->
+    <div id="stage2" class="hidden fixed inset-0 z-40 flex flex-col items-center justify-center jesus-bg transition-all duration-1000">
+        <div class="absolute inset-0 bg-black/50"></div>
+        
+        <div class="relative z-20 text-center px-4 flex flex-col items-center select-none">
+            <span class="clean-sub-font text-[10px] md:text-xs text-white font-bold uppercase tracking-[0.4em] mb-1">H A P P Y</span>
+            <h1 class="clean-title-font text-5xl md:text-7xl text-white uppercase tracking-wide font-extrabold drop-shadow-lg">Birthday</h1>
+            
+            <div class="mt-4 mb-2 drop-shadow-[0_2px_8px_rgba(0,0,0,0.7)]">
+                <p class="text-2xl md:text-3xl text-white font-bold always-with-you-font">I will always be with you</p>
+            </div>
+            
+            <button onclick="goToStage3()" class="mt-10 w-12 h-12 rounded-full bg-pink-600 hover:bg-pink-700 flex items-center justify-center text-white text-xl animate-bounce transition-transform transform hover:scale-110 shadow-lg border border-white/20">
+                <i class="fa-solid fa-arrow-down"></i>
+            </button>
+            <span class="text-xs uppercase tracking-widest text-gray-200 font-semibold mt-2 drop-shadow-md">Next Page</span>
+        </div>
+    </div>
+
+    <!-- ================= 3) THIRD PAGE WITH CAT IMAGE BACKGROUND ================= -->
+    <div id="stage3" class="hidden fixed inset-0 z-30 flex flex-col items-center justify-center cat-bg transition-all duration-1000">
+        <div class="absolute inset-0 bg-black/40"></div>
+        
+        <div class="relative z-10 text-center px-4 flex flex-col items-center">
+            <p class="text-3xl md:text-5xl clean-title-font text-white uppercase drop-shadow-xl mb-3 font-bold tracking-wide">A Beautiful Journey Begins</p>
+            <p class="text-lg md:text-xl text-yellow-300 font-light max-w-sm tracking-wide drop-shadow-md">Welcome to the celebration of a wonderful person.</p>
+            
+            <button onclick="revealMainContent()" class="mt-12 w-12 h-12 rounded-full bg-pink-600 hover:bg-pink-700 flex items-center justify-center text-white text-xl animate-bounce transition-transform transform hover:scale-110 shadow-lg border border-white/20">
+                <i class="fa-solid fa-arrow-down"></i>
+            </button>
+            <span class="text-xs uppercase tracking-widest text-white font-bold mt-2">Scroll To Content</span>
+        </div>
+    </div>
+
+    <!-- ================= 4) FINAL MAIN CONTENT CONTAINER ================= -->
+    <!-- Sticky Countdown Timer -->
+    <div id="sticky-timer" class="hidden fixed top-0 left-0 right-0 z-40 bg-black/80 backdrop-blur-md border-b border-white/10 py-2 shadow-lg">
+        <div class="max-w-md mx-auto grid grid-cols-4 gap-2 text-center px-4">
+            <div><span id="days" class="block text-xl font-bold text-pink-500 neon-glow-pink">00</span><span class="text-[10px] uppercase tracking-wider text-gray-400">Days</span></div>
+            <div><span id="hours" class="block text-xl font-bold text-pink-500 neon-glow-pink">00</span><span class="text-[10px] uppercase tracking-wider text-gray-400">Hours</span></div>
+            <div><span id="mins" class="block text-xl font-bold text-pink-500 neon-glow-pink">00</span><span class="text-[10px] uppercase tracking-wider text-gray-400">Mins</span></div>
+            <div><span id="secs" class="block text-xl font-bold text-pink-500 neon-glow-pink">00</span><span class="text-[10px] uppercase tracking-wider text-gray-400">Secs</span></div>
+        </div>
+    </div>
+
+    <!-- Main Scrollable Content -->
+    <div id="main-content" class="hidden min-h-screen pt-20 pb-24 px-4 relative overflow-hidden">
+        
+        <!-- பின்னணியில் லூப்பில் இயங்கும் flower.mp4 வீடியோ லேயர் -->
+        <video autoplay loop muted playsinline id="bg-video" class="absolute inset-0 w-full h-full object-cover z-0">
+            <source src="flower.mp4" type="video/mp4">
+        </video>
+        
+        <div class="absolute inset-0 bg-black/65 z-10"></div>
+        
+        <div class="max-w-md mx-auto flex flex-col items-center text-center relative z-20">
+            
+            <div class="flex flex-col items-center mb-10 select-none">
+                <span class="clean-sub-font text-[11px] md:text-xs tracking-[0.4em] text-pink-400 font-bold neon-glow-pink mb-1">H A P P Y</span>
+                <h2 class="capital-birthday-font text-5xl md:text-6xl text-pink-500 neon-glow-pink uppercase">BIRTHDAY</h2>
+            </div>
+
+            <!-- ================= 👑 RIGHT-SWIPE ONLY INFINITE LOOP CAROUSEL ================= -->
+            <div class="relative w-72 h-96 rounded-2xl overflow-hidden shadow-[0_0_30px_rgba(244,63,94,0.4)] border-2 border-pink-500/50 mb-4">
+                <div id="carousel-scroll" class="scroll-container h-full w-full">
+                    
+                    <!-- 🐾 1st MAIN CARD - BLANK GUIDE PAGE (வெப்சைட் ஓபன் ஆனதும் முதலில் 0வது இடத்தில் இதுதான் ஸ்கிரீன்ல நிக்கும்) -->
+                    <div class="scroll-item bg-black/85 backdrop-blur-md flex flex-col items-center justify-center p-6 select-none">
+                        <div class="w-16 h-16 rounded-full bg-pink-500/10 flex items-center justify-center border border-pink-500/30 mb-4 animate-pulse shadow-lg shadow-pink-500/20">
+                            <i class="fa-solid fa-arrow-right text-pink-400 text-xl animate-bounce"></i>
+                        </div>
+                        <p class="first-stage-cute-font text-2xl text-yellow-400 font-medium tracking-normal mb-2 leading-tight">🐾 Swipe Right ✨</p>
+                        <p class="text-xs text-gray-300 max-w-[180px] font-sans leading-relaxed tracking-wide">Swipe right to view beautiful memories made together!</p>
+                        <div class="mt-8 flex gap-1 text-pink-500">
+                            <i class="fa-solid fa-chevron-right text-xs"></i>
+                            <i class="fa-solid fa-chevron-right text-sm"></i>
+                        </div>
+                    </div>
+                    
+                    <!-- Real Photo Slides -->
+                    <div class="scroll-item"><img src="birthday.jpeg" alt="Slide 1" class="w-full h-full object-cover"></div>
+                    <div class="scroll-item"><img src="vivi.jpeg" alt="Slide 2" class="w-full h-full object-cover"></div>
+                    <div class="scroll-item"><img src="bike.jpeg" alt="Slide 3" class="w-full h-full object-cover"></div>
+                    <div class="scroll-item"><img src="clg.jpeg" alt="Slide 4" class="w-full h-full object-cover"></div>
+                    <div class="scroll-item"><img src="birth.jpeg" alt="Slide 5" class="w-full h-full object-cover"></div>
+                    <div class="scroll-item"><img src="cafe.jpeg" alt="Slide 6" class="w-full h-full object-cover"></div>
+                    
+                    <!-- 👑 CLONE GUIDE CARD AT END: ரைட் சைடு ஸ்வைப் பண்ணி முடிச்சதும் லூப்பிங் உடையாமல் இருக்க கைடு பேஜ் மீண்டும் கடைசியில் -->
+                    <div class="scroll-item bg-black/85 backdrop-blur-md flex flex-col items-center justify-center p-6 select-none">
+                        <div class="w-16 h-16 rounded-full bg-pink-500/10 flex items-center justify-center border border-pink-500/30 mb-4 animate-pulse">
+                            <i class="fa-solid fa-arrow-right text-pink-400 text-xl"></i>
+                        </div>
+                        <p class="first-stage-cute-font text-2xl text-yellow-400 font-medium tracking-normal mb-2">🐾 Swipe Right ✨</p>
+                    </div>
+                </div>
+                
+                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/10 to-transparent flex flex-col justify-end p-6 text-left pointer-events-none z-10">
+                    <h3 class="text-3xl text-yellow-400 premium-name-font font-bold neon-glow-gold text-wrap">VIVI maa</h3>
+                    <p class="text-xs tracking-widest uppercase text-gray-300 mt-1">October 24, 2026 ✨</p>
+                </div>
+            </div>
+            
+            <!-- Dots Indicators -->
+            <div class="flex gap-2 justify-center items-center mb-6">
+                <div class="dot active"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+            </div>
+
+            <div class="w-16 h-16 rounded-full border border-pink-500/40 flex items-center justify-center mb-10 shadow-inner">
+                <span class="text-2xl text-pink-400 premium-name-font font-bold neon-glow-pink">V</span>
+            </div>
+
+            <div class="text-pink-500/60 animate-bounce mb-10 text-lg">
+                <i class="fa-solid fa-chevron-down"></i>
+            </div>
+
+            <!-- Name & Info Area -->
+            <div class="w-full pt-6 mb-8">
+                <h1 class="text-4xl md:text-5xl text-pink-500 font-bold premium-name-font neon-glow-pink mb-2">VIVI maa</h1>
+                <p class="text-sm uppercase tracking-widest text-gray-400 mb-8 font-semibold premium-subname-font">October 24, 2026</p>
+
+                <div class="space-y-4 w-full px-2">
+                    <div class="bg-white/5 backdrop-blur-md rounded-xl p-5 border border-white/10 shadow-lg">
+                        <span class="text-xs font-semibold uppercase text-yellow-400 tracking-wider block mb-1">The Best Day</span>
+                        <h4 class="text-lg font-medium text-white">Friday, 24th October 2026</h4>
+                        <p class="text-xs text-gray-400 mt-1">00:00 AM Onwards</p>
+                    </div>
+
+                    <div class="bg-white/5 backdrop-blur-md rounded-xl p-6 border border-white/10 shadow-lg">
+                        <span class="text-xs font-semibold uppercase text-pink-400 tracking-wider block mb-2">Happiii Birthday My Girl ❤️✨</span>
+                        <p class="text-base text-gray-100 italic leading-relaxed font-sans px-1">
+                            "Happy Birthday, beautiful!<br>
+                            May your day be as bright and wonderful as your smile,<br>
+                            Filled with laughter, love, and every joy in style.<br>
+                            Here's to a year that brings your dreams to life — celebrate you!" 🎉✨
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- நாய் குட்டி சிக்னேச்சர் -->
+            <div class="w-full px-2 mb-6 pt-4 border-t border-white/5">
+                <div class="inline-flex items-center gap-2 bg-white/5 px-6 py-3 rounded-full border border-white/10 shadow-md">
+                    <span class="first-stage-cute-font text-lg text-gray-100 tracking-normal normal-case flex items-center gap-2">
+                        With love by your's naai kutty 🐾🐶💜
+                    </span>
+                </div>
+            </div>
+
+            <!-- வாட்ஸ்அப் பட்டன் -->
+            <div class="w-full px-2 mb-16">
+                <a href="https://wa.me/YOUR_PHONE_NUMBER" target="_blank" class="w-full inline-flex items-center justify-center gap-3 px-8 py-3 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white rounded-full font-semibold shadow-lg transition-all transform hover:-translate-y-0.5">
+                    <i class="fa-brands fa-whatsapp text-xl"></i> Reply on WhatsApp
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Audio Controller Button -->
+    <button id="mute-btn" onclick="toggleAudio()" class="hidden fixed bottom-4 right-4 z-50 w-10 h-10 rounded-full bg-black/60 backdrop-blur-md border border-white/20 items-center justify-center text-gray-300 hover:text-white transition-all transform scale-110">
+        <i id="mute-icon" class="fa-solid fa-volume-high"></i>
+    </button>
+
+    <script>
+        const music = document.getElementById('bg-music');
+        const muteIcon = document.getElementById('mute-icon');
+        const carousel = document.getElementById('carousel-scroll');
+
+        function goToStage2() {
+            music.play().catch(err => console.log("Audio track enabled.", err));
+            document.getElementById('mute-btn').classList.remove('hidden');
+            document.getElementById('mute-btn').classList.add('flex');
+
+            const s1 = document.getElementById('stage1');
+            s1.classList.add('opacity-0');
+            setTimeout(() => {
+                s1.remove();
+                const s2 = document.getElementById('stage2');
+                s2.classList.remove('hidden');
+                s2.classList.add('opacity-100');
+            }, 1000);
+        }
+
+        function goToStage3() {
+            const s2 = document.getElementById('stage2');
+            s2.classList.add('opacity-0');
+            setTimeout(() => {
+                s2.remove();
+                const s3 = document.getElementById('stage3');
+                s3.classList.remove('hidden');
+                s3.classList.add('opacity-100');
+            }, 1000);
+        }
+
+        function revealMainContent() {
+            const s3 = document.getElementById('stage3');
+            s3.classList.add('opacity-0');
+            setTimeout(() => {
+                s3.remove();
+                document.getElementById('sticky-timer').classList.remove('hidden');
+                const main = document.getElementById('main-content');
+                main.classList.remove('hidden');
+                main.classList.add('opacity-100');
+                
+                const videoBg = document.getElementById('bg-video');
+                if(videoBg) videoBg.play().catch(e => console.log("Video ready", e));
+                
+                // 👑 Start exactly at 0 (The first guide slide page) so it only allows swiping right!
+                carousel.scrollLeft = 0;
+                
+                carousel.addEventListener('scroll', handleInfiniteScroll);
+            }, 1000);
+        }
+
+        // 👑 SMOOTH SEAMLESS RIGHT-SIDE ONLY INFINITE CAROUSEL LOGIC
+        function handleInfiniteScroll() {
+            const width = carousel.offsetWidth;
+            const totalItems = document.querySelectorAll('.scroll-item').length;
+            
+            // If scrolled to the cloned guide page at the very end, snap seamlessly back to the real 1st guide page (index 0)
+            if (Math.ceil(carousel.scrollLeft) >= (width * (totalItems - 1)) - 5) {
+                carousel.style.scrollBehavior = 'auto';
+                carousel.scrollLeft = 0;
+                carousel.style.scrollBehavior = 'smooth';
+            }
+            
+            updateDots();
+        }
+
+        function updateDots() {
+            const dots = document.querySelectorAll('.dot');
+            const width = carousel.offsetWidth;
+            
+            let activeIndex = Math.round(carousel.scrollLeft / width);
+            
+            if (activeIndex >= dots.length) activeIndex = 0;
+            if (activeIndex < 0) activeIndex = 0;
+            
+            dots.forEach((dot, index) => {
+                if (index === activeIndex) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+        }
+
+        function toggleAudio() {
+            if (music.paused) {
+                music.play();
+                muteIcon.className = "fa-solid fa-volume-high";
+            } else {
+                music.pause();
+                muteIcon.className = "fa-solid fa-volume-xmark";
+            }
+        }
+
+        const targetDate = new Date("October 24, 2026 00:00:00").getTime();
+
+        setInterval(function() {
+            const now = new Date().getTime();
+            const difference = targetDate - now;
+
+            if (difference < 0) {
+                document.getElementById("days").innerText = "00";
+                document.getElementById("hours").innerText = "00";
+                document.getElementById("mins").innerText = "00";
+                document.getElementById("secs").innerText = "00";
+                return;
+            }
+
+            const d = Math.floor(difference / (1000 * 60 * 60 * 24));
+            const h = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const m = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+            const s = Math.floor((difference % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerText = d < 10 ? "0" + d : d;
+            document.getElementById("hours").innerText = h < 10 ? "0" + h : h;
+            document.getElementById("mins").innerText = m < 10 ? "0" + m : m;
+            document.getElementById("secs").innerText = s < 10 ? "0" + s : s;
+        }, 1000);
+    </script>
+</body>
+</html>
