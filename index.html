@@ -269,19 +269,13 @@
         const carousel = document.getElementById('carousel-scroll');
 
         function goToStage2() {
-            music.play().catch(err => console.log("Audio track enabled.", err));
-            document.getElementById('mute-btn').classList.remove('hidden');
-            document.getElementById('mute-btn').classList.add('flex');
-
-            const s1 = document.getElementById('stage1');
-            s1.classList.add('opacity-0');
-            setTimeout(() => {
-                s1.remove();
-                const s2 = document.getElementById('stage2');
-                s2.classList.remove('hidden');
-                s2.classList.add('opacity-100');
-            }, 1000);
-        }
+    // ஃபுல் ஸ்கிரீன் மோடுக்கு மாற்ற
+    const elem = document.documentElement;
+    if (elem.requestFullscreen) {
+        elem.requestFullscreen();
+    } else if (elem.webkitRequestFullscreen) { /* Safari */
+        elem.webkitRequestFullscreen();
+    } else if (elem.msRequestFullscreen) {Normally I can help with things like this, but I don't seem to have access to that content. You can try again or ask me for something else.
 
         function goToStage3() {
             const s2 = document.getElementById('stage2');
